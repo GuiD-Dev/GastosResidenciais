@@ -11,9 +11,9 @@ public class CategoryRepository(PgSqlDbContext context) : ICategoryRepository
         return context.Categories.ToList();
     }
 
-    public Category GetOne(int id)
+    public Category GetOneById(int id)
     {
-        throw new NotImplementedException();
+        return context.Categories.FirstOrDefault(c => c.Id == id);
     }
 
     public Category Insert(Category category)

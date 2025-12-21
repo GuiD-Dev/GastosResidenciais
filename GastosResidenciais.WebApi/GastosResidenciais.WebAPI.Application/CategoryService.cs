@@ -14,7 +14,7 @@ public class CategoryService(ICategoryRepository categoryRepository) : ICategory
 
     public Category GetCategory(int id)
     {
-        return categoryRepository.GetOne(id);
+        return categoryRepository.GetOneById(id);
     }
 
     public Category InsertCategory(CategoryDto dto)
