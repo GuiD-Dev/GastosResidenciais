@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import type React from 'react'
-import './PersonForm.css'
 import type { Person } from '../types/person';
 
 interface Props {
