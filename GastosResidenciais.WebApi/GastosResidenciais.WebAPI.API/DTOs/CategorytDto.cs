@@ -5,6 +5,7 @@ namespace GastosResidenciais.WebApi.API.DTOs;
 
 public class CategoryDto
 {
+    public int Id { get; set; }
     public string Description { get; set; }
     public CategoryPurpose Purpose { get; set; }
 
@@ -12,6 +13,7 @@ public class CategoryDto
     {
         return new Category
         {
+            Id = dto.Id,
             Description = dto.Description,
             Purpose = dto.Purpose,
         };
@@ -21,6 +23,7 @@ public class CategoryDto
     {
         return new CategoryDto
         {
+            Id = entity.Id,
             Description = entity.Description,
             Purpose = entity.Purpose,
         };
