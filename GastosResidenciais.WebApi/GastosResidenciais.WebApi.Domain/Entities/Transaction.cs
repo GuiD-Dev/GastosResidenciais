@@ -24,7 +24,18 @@ public class Transaction
     }
 
     [Column("value"), Required]
-    public decimal Value { get; set; }
+    public decimal Value
+    {
+        get;
+        set
+        {
+            if (value <= 0)
+                throw new ArgumentException("Value must be greater than 0");
+
+            field = value;
+        }
+    }
+
 
     [Column("type"), Required]
     public TransactionType Type
