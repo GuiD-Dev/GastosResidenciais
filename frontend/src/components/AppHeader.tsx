@@ -11,6 +11,7 @@ export function AppHeader({ pageTitle }: Props) {
       <nav>
         <NavLink to="/person">People</NavLink>
         <NavLink to="/category">Categories</NavLink>
+        <NavLink to="/transaction">Transactions</NavLink>
       </nav>
 
       <h2>{pageTitle}</h2>
