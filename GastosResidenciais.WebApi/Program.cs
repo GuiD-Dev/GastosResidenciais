@@ -10,6 +10,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
+    );
+});
+
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<IPersonService, PersonService>();
@@ -33,6 +40,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseCors();
 app.UseHttpsRedirection();
 app.MapControllers();
 
