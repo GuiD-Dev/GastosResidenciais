@@ -1,0 +1,17 @@
+import { NavLink } from "react-router-dom";
+
+interface Props {
+  pageTitle: string
+}
+
+export function AppHeader({ pageTitle }: Props) {
+  return (
+    <header>
+      <nav>
+        <NavLink to="/">People</NavLink>
+      </nav>
+
+      <h2>{pageTitle}</h2>
+    </header>
+  );
+}

@@ -3,6 +3,7 @@ import type { Person } from "../types/person";
 import { PersonForm } from "./../components/PersonForm";
 import { createPerson, deletePerson, getPeople, updatePerson } from "../services/personService";
 import { PersonTable } from "../components/PersonTable";
+import { AppHeader } from "../components/AppHeader";
 
 export function PersonPage() {
   const [people, setPeople] = useState<Person[]>([]);
@@ -30,6 +31,8 @@ export function PersonPage() {
 
   return (
     <div>
+      <AppHeader pageTitle={"Person Registrer"} />
+
       <PersonForm
         selectedPerson={selectedPerson}
         onSubmit={handleSubmit}

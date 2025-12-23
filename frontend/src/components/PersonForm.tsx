@@ -39,8 +39,6 @@ export function PersonForm({ selectedPerson, onSubmit, onCancelEdit }: Props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Person Register</h2>
-
       <input
         type='text'
         name='name'
