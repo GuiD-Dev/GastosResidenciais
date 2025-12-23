@@ -1,0 +1,17 @@
+nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+a {
+  background-color: cadetblue;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  font-weight: 700;
+  color: black;
+}
+
+a:hover {
+  background-color: chartreuse;
+  color: black;
+}
