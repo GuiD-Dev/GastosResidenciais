@@ -1,6 +1,6 @@
 using HomeFinances.WebApi.Domain.Entities;
 
-namespace HomeFinances.WebApi.API.DTOs;
+namespace HomeFinances.WebApi.Application.DTOs;
 
 public class PersonDto
 {

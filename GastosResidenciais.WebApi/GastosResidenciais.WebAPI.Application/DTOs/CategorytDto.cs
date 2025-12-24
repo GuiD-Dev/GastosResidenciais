@@ -1,7 +1,7 @@
 using HomeFinances.WebApi.Domain.Entities;
 using HomeFinances.WebApi.Domain.Enums;
 
-namespace HomeFinances.WebApi.API.DTOs;
+namespace HomeFinances.WebApi.Application.DTOs;
 
 public class CategoryDto
 {

@@ -1,4 +1,4 @@
-using HomeFinances.WebApi.API.DTOs;
+using HomeFinances.WebApi.Application.DTOs;
 using HomeFinances.WebApi.API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
