@@ -1,6 +1,6 @@
-using GastosResidenciais.WebApi.Domain.Entities;
+using HomeFinances.WebApi.Domain.Entities;
 
-namespace GastosResidenciais.WebApi.Application.Interfaces;
+namespace HomeFinances.WebApi.Application.Interfaces;
 
 public interface ICategoryRepository
 {

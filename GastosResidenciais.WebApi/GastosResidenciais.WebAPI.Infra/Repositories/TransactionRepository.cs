@@ -1,9 +1,9 @@
-using GastosResidenciais.WebApi.Application.Interfaces;
-using GastosResidenciais.WebApi.Domain.Entities;
-using GastosResidenciais.WebApi.Infra.Contexts;
+using HomeFinances.WebApi.Application.Interfaces;
+using HomeFinances.WebApi.Domain.Entities;
+using HomeFinances.WebApi.Infra.Contexts;
 using Microsoft.EntityFrameworkCore;
 
-namespace GastosResidenciais.WebApi.Infra.Repositories;
+namespace HomeFinances.WebApi.Infra.Repositories;
 
 public class TransactionRepository(PgSqlDbContext context) : ITransactionRepository
 {

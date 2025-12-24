@@ -1,7 +1,7 @@
-using GastosResidenciais.WebApi.API.DTOs;
-using GastosResidenciais.WebApi.Domain.Entities;
+using HomeFinances.WebApi.API.DTOs;
+using HomeFinances.WebApi.Domain.Entities;
 
-namespace GastosResidenciais.WebApi.API.Interfaces;
+namespace HomeFinances.WebApi.API.Interfaces;
 
 public interface IPersonService
 {

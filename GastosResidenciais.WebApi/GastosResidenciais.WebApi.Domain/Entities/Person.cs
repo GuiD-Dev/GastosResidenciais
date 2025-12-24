@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using GastosResidenciais.WebApi.Domain.Enums;
+using HomeFinances.WebApi.Domain.Enums;
 
-namespace GastosResidenciais.WebApi.Domain.Entities;
+namespace HomeFinances.WebApi.Domain.Entities;
 
 [Table("person")]
 public class Person

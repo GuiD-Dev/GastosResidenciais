@@ -1,7 +1,7 @@
-using GastosResidenciais.WebApi.Domain.Entities;
-using GastosResidenciais.WebApi.Domain.Enums;
+using HomeFinances.WebApi.Domain.Entities;
+using HomeFinances.WebApi.Domain.Enums;
 
-namespace GastosResidenciais.WebApi.API.DTOs;
+namespace HomeFinances.WebApi.API.DTOs;
 
 public class CategoryDto
 {

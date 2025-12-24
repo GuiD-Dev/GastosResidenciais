@@ -1,7 +1,7 @@
-using GastosResidenciais.WebApi.Domain.Entities;
+using HomeFinances.WebApi.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace GastosResidenciais.WebApi.Infra.Contexts;
+namespace HomeFinances.WebApi.Infra.Contexts;
 
 public class PgSqlDbContext(DbContextOptions<PgSqlDbContext> options) : DbContext(options)
 {

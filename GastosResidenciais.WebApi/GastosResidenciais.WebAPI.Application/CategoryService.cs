@@ -1,9 +1,9 @@
-using GastosResidenciais.WebApi.API.DTOs;
-using GastosResidenciais.WebApi.API.Interfaces;
-using GastosResidenciais.WebApi.Application.Interfaces;
-using GastosResidenciais.WebApi.Domain.Entities;
+using HomeFinances.WebApi.API.DTOs;
+using HomeFinances.WebApi.API.Interfaces;
+using HomeFinances.WebApi.Application.Interfaces;
+using HomeFinances.WebApi.Domain.Entities;
 
-namespace GastosResidenciais.WebApi.Application.Services;
+namespace HomeFinances.WebApi.Application.Services;
 
 public class CategoryService(ICategoryRepository categoryRepository) : ICategoryService
 {

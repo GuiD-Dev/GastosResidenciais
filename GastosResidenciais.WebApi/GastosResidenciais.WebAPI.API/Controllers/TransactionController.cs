@@ -1,8 +1,8 @@
-using GastosResidenciais.WebApi.API.DTOs;
-using GastosResidenciais.WebApi.API.Interfaces;
+using HomeFinances.WebApi.API.DTOs;
+using HomeFinances.WebApi.API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GastosResidenciais.WebApi.API.Controllers;
+namespace HomeFinances.WebApi.API.Controllers;
 
 [Route("[controller]")]
 [ApiController]

@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace GastosResidenciais.WebApi.Migrations
+namespace HomeFinances.WebApi.Migrations
 {
     /// <inheritdoc />
     public partial class AddTables : Migration

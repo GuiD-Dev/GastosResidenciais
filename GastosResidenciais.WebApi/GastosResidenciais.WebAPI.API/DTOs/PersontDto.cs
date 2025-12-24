@@ -1,6 +1,6 @@
-using GastosResidenciais.WebApi.Domain.Entities;
+using HomeFinances.WebApi.Domain.Entities;
 
-namespace GastosResidenciais.WebApi.API.DTOs;
+namespace HomeFinances.WebApi.API.DTOs;
 
 public class PersonDto
 {

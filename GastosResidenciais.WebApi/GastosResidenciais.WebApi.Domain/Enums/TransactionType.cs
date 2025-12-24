@@ -1,4 +1,4 @@
-namespace GastosResidenciais.WebApi.Domain.Enums;
+namespace HomeFinances.WebApi.Domain.Enums;
 
 public enum TransactionType
 {

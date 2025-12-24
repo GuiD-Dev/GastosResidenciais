@@ -1,8 +1,8 @@
-using GastosResidenciais.WebApi.API.Interfaces;
-using GastosResidenciais.WebApi.Application.Interfaces;
-using GastosResidenciais.WebApi.Application.Services;
-using GastosResidenciais.WebApi.Infra.Contexts;
-using GastosResidenciais.WebApi.Infra.Repositories;
+using HomeFinances.WebApi.API.Interfaces;
+using HomeFinances.WebApi.Application.Interfaces;
+using HomeFinances.WebApi.Application.Services;
+using HomeFinances.WebApi.Infra.Contexts;
+using HomeFinances.WebApi.Infra.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
