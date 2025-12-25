@@ -1,5 +1,6 @@
 import { Button, Table } from 'react-bootstrap';
 import type { Transaction } from '../types/transaction';
+import { TransactionType } from '../types/enums';
 
 interface Props {
   transactions: Transaction[];
@@ -24,9 +25,9 @@ export function TransactionTable({ transactions, onDelete }: Props) {
           <tr key={transaction.id}>
             <td>{transaction.description}</td>
             <td>{transaction.value}</td>
-            <td>{transaction.type}</td>
-            <td>{transaction.categoryId}</td>
-            <td>{transaction.personId}</td>
+            <td>{transaction.type === TransactionType.Recipe ? "Recipe" : "Expense"}</td>
+            <td>{transaction.categoryDescription}</td>
+            <td>{transaction.personName}</td>
             <td>
               <Button variant='danger' onClick={() => onDelete(transaction.id!)}>Delete</Button>
             </td>

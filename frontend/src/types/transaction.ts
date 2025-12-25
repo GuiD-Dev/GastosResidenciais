@@ -6,5 +6,7 @@ export interface Transaction {
   value: number,
   type: TransactionType,
   categoryId: number,
+  categoryDescription?: string,
   personId: number,
+  personName?: string,
 }
