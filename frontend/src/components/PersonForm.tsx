@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import type React from 'react'
 import type { Person } from '../types/person';
+import Form from 'react-bootstrap/Form';
+import { Button, Col, Row } from 'react-bootstrap';
 
 interface Props {
   selectedPerson?: Person | null;
@@ -27,9 +29,9 @@ export function PersonForm({ selectedPerson, onSubmit, onCancelEdit }: Props) {
     e.preventDefault();
 
     if (selectedPerson) {
-      onSubmit({ id: selectedPerson.id, name, age });
+      onSubmit({ id: selectedPerson.id, name, age } as any);
     } else {
-      onSubmit({ name, age });
+      onSubmit({ name, age } as any);
     }
 
     setName("");
@@ -37,34 +39,45 @@ export function PersonForm({ selectedPerson, onSubmit, onCancelEdit }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type='text'
-        name='name'
-        placeholder='Name of Person'
-        value={name}
-        onChange={e => setName(e.target.value)}
-        required
-      />
+    <Form onSubmit={handleSubmit} className='my-4'>
+      <Form.Group as={Row}>
+        <Form.Label column sm={2}>Name:</Form.Label>
+        <Col sm={10}>
+          <Form.Control
+            type='text'
+            name='name'
+            placeholder='Name of Person'
+            value={name}
+            onChange={e => setName(e.target.value)}
+            required
+          />
+        </Col>
+      </Form.Group>
 
-      <input
-        type='number'
-        name='age'
-        placeholder='Age of Person'
-        value={age}
-        onChange={e => setAge(Number(e.target.value))}
-        required
-      />
+      <Form.Group as={Row}>
+        <Form.Label column sm={2}>Age:</Form.Label>
+        <Col sm={10}>
+          <Form.Control
+            type='number'
+            name='age'
+            placeholder='Age of Person'
+            value={age}
+            onChange={e => setAge(Number(e.target.value))}
+            required
+          />
+        </Col>
+      </Form.Group>
 
-      <button type='submit'>
-        {selectedPerson ? "Update" : "Save"}
-      </button>
-
-      {selectedPerson && (
-        <button type='button' onClick={onCancelEdit}>
-          Cancel
-        </button>
-      )}
-    </form>
+      <Form.Group as={Row} className="mb-3">
+        <Button variant="primary" type="submit">
+          {selectedPerson ? "Update" : "Save"}
+        </Button>
+        {selectedPerson && (
+          <Button variant="secondary" onClick={onCancelEdit}>
+            Cancel
+          </Button>
+        )}
+      </Form.Group>
+    </Form>
   )
 }

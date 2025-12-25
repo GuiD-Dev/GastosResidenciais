@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type React from 'react'
 import type { Category } from '../types/category';
+import { Button, Col, Form, Row } from 'react-bootstrap';
 
 interface Props {
   selectedCategory?: Category | null;
@@ -33,28 +34,42 @@ export function CategoryForm({ selectedCategory, onSubmit }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type='text'
-        name='description'
-        placeholder='Short Description'
-        value={description}
-        onChange={e => setDescription(e.target.value)}
-        required
-      />
+    <Form onSubmit={handleSubmit} className='my-4'>
+      <Form.Group as={Row}>
+        <Form.Label column sm={2}>Description:</Form.Label>
+        <Col sm={10}>
+          <Form.Control
+            type='text'
+            name='description'
+            placeholder='Short Description'
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+            required
+          />
+        </Col>
+      </Form.Group>
 
-      <input
-        type='number'
-        name='purpose'
-        placeholder='Purpose of the Category'
-        value={purpose}
-        onChange={e => setPurpose(Number(e.target.value))}
-        required
-      />
+      <Form.Group as={Row}>
+        <Form.Label column sm={2}>Purpose:</Form.Label>
+        <Col sm={10}>
+          <Form.Select
+            defaultValue='0'
+            name='purpose'
+            value={purpose}
+            onChange={e => setPurpose(Number(e.target.value))}
+          >
+            <option value="0">Recipe</option>
+            <option value="1">Expense</option>
+            <option value="2">Both</option>
+          </Form.Select>
+        </Col>
+      </Form.Group>
 
-      <button type='submit'>
-        Save
-      </button>
-    </form>
+      <Form.Group as={Row} className="mb-3">
+        <Button variant="primary" type="submit">
+          Save
+        </Button>
+      </Form.Group>
+    </Form>
   )
 }

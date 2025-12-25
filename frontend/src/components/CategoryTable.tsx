@@ -1,3 +1,4 @@
+import { Button, Table } from 'react-bootstrap';
 import type { Category } from '../types/category';
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 
 export function CategoryTable({ categories, onDelete }: Props) {
   return (
-    <table border={1} cellPadding={8}>
+    <Table striped bordered hover size="md">
       <thead>
         <tr>
           <th>Description</th>
@@ -21,11 +22,11 @@ export function CategoryTable({ categories, onDelete }: Props) {
             <td>{category.description}</td>
             <td>{category.purpose}</td>
             <td>
-              <button onClick={() => onDelete(category.id!)}>Delete</button>
+              <Button variant='danger' onClick={() => onDelete(category.id!)}>Delete</Button>
             </td>
           </tr>
         ))}
       </tbody>
-    </table>
+    </Table>
   )
 }

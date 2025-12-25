@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AppHeader } from "../components/AppHeader";
 import { getPeopleAndTransactions } from "../services/personService";
 import type { Person } from "../types/person";
+import { Table } from "react-bootstrap";
 
 export function HomePage() {
   const [people, setPeople] = useState<Person[]>([]);
@@ -17,9 +18,9 @@ export function HomePage() {
 
   return (
     <div>
-      <AppHeader pageTitle={"Home"} />
+      <AppHeader pageTitle={"Totals per Person"} />
 
-      <table border={1} cellPadding={8}>
+      <Table striped bordered hover size="md">
         <thead>
           <tr>
             <th>Name</th>
@@ -43,8 +44,9 @@ export function HomePage() {
                   <span style={{ "color": "green" }}>{person.recipes}</span>
                 </td>
                 <td>
-                  <span style={{ "color": "red" }}>{person.expenses}</span></td>
-                <td style={{ "color": "black", "fontWeight": "700", "background": "red" }}>
+                  <span style={{ "color": "red" }}>{person.expenses}</span>
+                </td>
+                <td style={(person.balance >= 0 ? { "background": "green", "fontWeight": "700" } : { "background": "red", "fontWeight": "700" })}>
                   <span>{person.balance}</span>
                 </td>
               </tr>
@@ -53,13 +55,13 @@ export function HomePage() {
         </tbody>
         <tfoot>
           <tr>
-            <td colSpan={2}>Summary</td>
+            <td colSpan={2} style={{ "background": "lightblue" }}>Summary</td>
             <td>{totalRecipes}</td>
             <td>{totalExpenses}</td>
             <td>{totalBelance}</td>
           </tr>
         </tfoot>
-      </table>
+      </Table>
     </div>
   );
 }

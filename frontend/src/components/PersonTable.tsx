@@ -1,3 +1,4 @@
+import { Button, Table } from 'react-bootstrap';
 import type { Person } from '../types/person';
 
 interface Props {
@@ -8,7 +9,7 @@ interface Props {
 
 export function PersonTable({ people, onEdit, onDelete }: Props) {
   return (
-    <table border={1} cellPadding={8}>
+    <Table striped bordered hover size="md">
       <thead>
         <tr>
           <th>Name</th>
@@ -22,12 +23,12 @@ export function PersonTable({ people, onEdit, onDelete }: Props) {
             <td>{person.name}</td>
             <td>{person.age}</td>
             <td>
-              <button onClick={() => onEdit(person)}>Edit</button>
-              <button onClick={() => onDelete(person.id!)}>Delete</button>
+              <Button variant='primary' onClick={() => onEdit(person)}>Edit</Button>
+              <Button variant='danger' onClick={() => onDelete(person.id!)}>Delete</Button>
             </td>
           </tr>
         ))}
       </tbody>
-    </table>
+    </Table>
   )
 }

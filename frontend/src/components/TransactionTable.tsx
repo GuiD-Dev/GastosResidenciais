@@ -1,3 +1,4 @@
+import { Button, Table } from 'react-bootstrap';
 import type { Transaction } from '../types/transaction';
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 
 export function TransactionTable({ transactions, onDelete }: Props) {
   return (
-    <table border={1} cellPadding={8}>
+    <Table striped bordered hover size="md">
       <thead>
         <tr>
           <th>Description</th>
@@ -27,11 +28,11 @@ export function TransactionTable({ transactions, onDelete }: Props) {
             <td>{transaction.categoryId}</td>
             <td>{transaction.personId}</td>
             <td>
-              <button onClick={() => onDelete(transaction.id!)}>Delete</button>
+              <Button variant='danger' onClick={() => onDelete(transaction.id!)}>Delete</Button>
             </td>
           </tr>
         ))}
       </tbody>
-    </table>
+    </Table>
   )
 }
