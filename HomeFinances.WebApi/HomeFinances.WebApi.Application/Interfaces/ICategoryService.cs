@@ -5,8 +5,8 @@ namespace HomeFinances.WebApi.Application.Interfaces;
 
 public interface ICategoryService
 {
-    IEnumerable<CategoryDto> ListCategories();
-    Category GetCategory(int id);
-    CategoryDto InsertCategory(CategoryDto dto);
-    bool DeleteCategory(int id);
+    Task<IEnumerable<CategoryDto>> ListCategoriesAsync();
+    Task<Category> GetCategoryAsync(int id);
+    Task<CategoryDto> InsertCategoryAsync(CategoryDto dto);
+    Task<bool> DeleteCategoryAsync(int id);
 }

@@ -9,17 +9,17 @@ namespace HomeFinances.WebApi.API.Controllers;
 public class TransactionController(ITransactionService transactionService) : ControllerBase
 {
     [HttpGet]
-    public IActionResult LisTransactions()
+    public async Task<IActionResult> LisTransactionsAsync()
     {
-        return Ok(transactionService.ListTransactions());
+        return Ok(await transactionService.ListTransactionsAsync());
     }
 
     [HttpPost]
-    public IActionResult InsertTransaction(TransactionDto dto)
+    public async Task<IActionResult> InsertTransactionAsync(TransactionDto dto)
     {
         try
         {
-            return Created(string.Empty, transactionService.InsertTransaction(dto));
+            return Created(string.Empty, await transactionService.InsertTransactionAsync(dto));
         }
         catch (Exception e)
         {
@@ -28,11 +28,11 @@ public class TransactionController(ITransactionService transactionService) : Con
     }
 
     [HttpDelete("{id}")]
-    public IActionResult DeleteTransaction(int id)
+    public async Task<IActionResult> DeleteTransactionAsync(int id)
     {
         try
         {
-            transactionService.DeleteTransaction(id);
+            await transactionService.DeleteTransactionAsync(id);
             return NoContent();
         }
         catch (Exception e)

@@ -5,8 +5,8 @@ namespace HomeFinances.WebApi.Application.Interfaces;
 
 public interface ITransactionService
 {
-    IEnumerable<TransactionDto> ListTransactions();
-    Transaction GetTransaction(int id);
-    TransactionDto InsertTransaction(TransactionDto dto);
-    bool DeleteTransaction(int id);
+    Task<IEnumerable<TransactionDto>> ListTransactionsAsync();
+    Task<Transaction> GetTransactionAsync(int id);
+    Task<TransactionDto> InsertTransactionAsync(TransactionDto dto);
+    Task<bool> DeleteTransactionAsync(int id);
 }

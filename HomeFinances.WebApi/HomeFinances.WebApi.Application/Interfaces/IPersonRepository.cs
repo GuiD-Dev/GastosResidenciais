@@ -4,9 +4,9 @@ namespace HomeFinances.WebApi.Application.Interfaces;
 
 public interface IPersonRepository
 {
-    IEnumerable<Person> GetMany(bool includeTransactions = false);
-    Person GetOneById(int id, bool asNoTracking = false);
-    Person Insert(Person person);
-    Person Update(Person person);
-    bool Delete(int id);
+    Task<IEnumerable<Person>> GetManyAsync(bool includeTransactions = false);
+    Task<Person> GetOneByIdAsync(int id, bool asNoTracking = false);
+    Task<Person> InsertAsync(Person person);
+    Task<Person> UpdateAsync(Person person);
+    Task<bool> DeleteAsync(int id);
 }

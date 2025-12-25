@@ -7,35 +7,35 @@ namespace HomeFinances.WebApi.Infrastructure.Repositories;
 
 public class TransactionRepository(PgSqlDbContext context) : ITransactionRepository
 {
-    public IEnumerable<Transaction> GetMany()
+    public async Task<IEnumerable<Transaction>> GetManyAsync()
     {
-        return context.Transactions
+        return await context.Transactions
                         .Include(t => t.Person)
                         .Include(t => t.Category)
-                        .ToList();
+                        .ToListAsync();
     }
 
-    public Transaction GetOneById(int id, bool asNoTracking = false)
+    public async Task<Transaction> GetOneByIdAsync(int id, bool asNoTracking = false)
     {
         var query = context.Transactions.AsQueryable();
         if (asNoTracking) query = query.AsNoTracking();
-        return query.FirstOrDefault(t => t.Id == id);
+        return await query.FirstOrDefaultAsync(t => t.Id == id);
     }
 
-    public Transaction Insert(Transaction transaction)
+    public async Task<Transaction> InsertAsync(Transaction transaction)
     {
         context.Transactions.Add(transaction);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
         return transaction;
     }
 
-    public bool Delete(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
-        var transaction = GetOneById(id);
+        var transaction = await GetOneByIdAsync(id);
         if (transaction is null) throw new Exception("Id not found");
 
         context.Transactions.Remove(transaction);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
 
         return true;
     }

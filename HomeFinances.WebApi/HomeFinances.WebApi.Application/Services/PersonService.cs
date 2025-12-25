@@ -6,36 +6,36 @@ namespace HomeFinances.WebApi.Application.Services;
 
 public class PersonService(IPersonRepository personRepository) : IPersonService
 {
-    public IEnumerable<PersonDto> ListPeople()
+    public async Task<IEnumerable<PersonDto>> ListPeopleAsync()
     {
-        return personRepository.GetMany()
+        return (await personRepository.GetManyAsync())
             .Select(person => (PersonDto)person);
     }
 
-    public IEnumerable<PersonDto> ListPeopleAndTransactions()
+    public async Task<IEnumerable<PersonDto>> ListPeopleWithTransactionsAsync()
     {
-        return personRepository.GetMany(includeTransactions: true)
+        return (await personRepository.GetManyAsync(includeTransactions: true))
             .Select(person => (PersonDto)person);
     }
 
-    public Person GetPerson(int id)
+    public async Task<Person> GetPersonAsync(int id)
     {
-        return personRepository.GetOneById(id);
+        return await personRepository.GetOneByIdAsync(id);
     }
 
-    public PersonDto InsertPerson(PersonDto dto)
+    public async Task<PersonDto> InsertPersonAsync(PersonDto dto)
     {
-        return (PersonDto)personRepository.Insert((Person)dto);
+        return (PersonDto)await personRepository.InsertAsync((Person)dto);
     }
 
-    public PersonDto UpdatePerson(PersonDto dto)
+    public async Task<PersonDto> UpdatePersonAsync(PersonDto dto)
     {
-        personRepository.Update((Person)dto);
+        await personRepository.UpdateAsync((Person)dto);
         return dto;
     }
 
-    public bool DeletePerson(int id)
+    public async Task<bool> DeletePersonAsync(int id)
     {
-        return personRepository.Delete(id);
+        return await personRepository.DeleteAsync(id);
     }
 }

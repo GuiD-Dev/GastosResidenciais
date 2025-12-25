@@ -6,24 +6,25 @@ namespace HomeFinances.WebApi.Application.Services;
 
 public class CategoryService(ICategoryRepository categoryRepository) : ICategoryService
 {
-    public IEnumerable<CategoryDto> ListCategories()
+    public async Task<IEnumerable<CategoryDto>> ListCategoriesAsync()
     {
-        return categoryRepository.GetMany().Select(category => (CategoryDto)category);
+        return (await categoryRepository.GetManyAsync())
+            .Select(category => (CategoryDto)category);
     }
 
-    public Category GetCategory(int id)
+    public async Task<Category> GetCategoryAsync(int id)
     {
-        return categoryRepository.GetOneById(id);
+        return await categoryRepository.GetOneByIdAsync(id);
     }
 
-    public CategoryDto InsertCategory(CategoryDto dto)
+    public async Task<CategoryDto> InsertCategoryAsync(CategoryDto dto)
     {
-        categoryRepository.Insert((Category)dto);
+        await categoryRepository.InsertAsync((Category)dto);
         return dto;
     }
 
-    public bool DeleteCategory(int id)
+    public async Task<bool> DeleteCategoryAsync(int id)
     {
-        return categoryRepository.Delete(id);
+        return await categoryRepository.DeleteAsync(id);
     }
 }

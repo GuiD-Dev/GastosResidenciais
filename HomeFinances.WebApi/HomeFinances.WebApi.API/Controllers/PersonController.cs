@@ -9,23 +9,23 @@ namespace HomeFinances.WebApi.API.Controllers;
 public class PersonController(IPersonService personService) : ControllerBase
 {
     [HttpGet("list")]
-    public IActionResult ListPeople()
+    public async Task<IActionResult> ListPeopleAsync()
     {
-        return Ok(personService.ListPeople());
+        return Ok(await personService.ListPeopleAsync());
     }
 
     [HttpGet("list-with-transactions")]
-    public IActionResult ListPeopleAndTransactions()
+    public async Task<IActionResult> ListPeopleWithTransactionsAsync()
     {
-        return Ok(personService.ListPeopleAndTransactions());
+        return Ok(await personService.ListPeopleWithTransactionsAsync());
     }
 
     [HttpPost]
-    public IActionResult InsertPerson(PersonDto dto)
+    public async Task<IActionResult> InsertPersonAsync(PersonDto dto)
     {
         try
         {
-            return Created(string.Empty, personService.InsertPerson(dto));
+            return Created(string.Empty, await personService.InsertPersonAsync(dto));
         }
         catch (Exception e)
         {
@@ -34,11 +34,11 @@ public class PersonController(IPersonService personService) : ControllerBase
     }
 
     [HttpPut]
-    public IActionResult UpdatePerson(PersonDto dto)
+    public async Task<IActionResult> UpdatePersonAsync(PersonDto dto)
     {
         try
         {
-            personService.UpdatePerson(dto);
+            await personService.UpdatePersonAsync(dto);
             return NoContent();
         }
         catch (Exception e)
@@ -48,11 +48,11 @@ public class PersonController(IPersonService personService) : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public IActionResult DeletePerson(int id)
+    public async Task<IActionResult> DeletePersonAsync(int id)
     {
         try
         {
-            personService.DeletePerson(id);
+            await personService.DeletePersonAsync(id);
             return NoContent();
         }
         catch (Exception e)

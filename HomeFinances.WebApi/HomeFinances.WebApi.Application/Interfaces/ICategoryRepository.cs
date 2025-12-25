@@ -4,8 +4,8 @@ namespace HomeFinances.WebApi.Application.Interfaces;
 
 public interface ICategoryRepository
 {
-    IEnumerable<Category> GetMany();
-    Category GetOneById(int id, bool asNoTracking = false);
-    Category Insert(Category category);
-    bool Delete(int id);
+    Task<IEnumerable<Category>> GetManyAsync();
+    Task<Category> GetOneByIdAsync(int id, bool asNoTracking = false);
+    Task<Category> InsertAsync(Category category);
+    Task<bool> DeleteAsync(int id);
 }

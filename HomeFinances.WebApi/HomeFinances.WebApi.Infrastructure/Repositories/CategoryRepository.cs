@@ -7,32 +7,32 @@ namespace HomeFinances.WebApi.Infrastructure.Repositories;
 
 public class CategoryRepository(PgSqlDbContext context) : ICategoryRepository
 {
-    public IEnumerable<Category> GetMany()
+    public async Task<IEnumerable<Category>> GetManyAsync()
     {
-        return context.Categories.ToList();
+        return await context.Categories.ToListAsync();
     }
 
-    public Category GetOneById(int id, bool asNoTracking = false)
+    public async Task<Category> GetOneByIdAsync(int id, bool asNoTracking = false)
     {
         var query = context.Categories.AsQueryable();
         if (asNoTracking) query = query.AsNoTracking();
-        return query.FirstOrDefault(c => c.Id == id);
+        return await query.FirstOrDefaultAsync(c => c.Id == id);
     }
 
-    public Category Insert(Category category)
+    public async Task<Category> InsertAsync(Category category)
     {
         context.Categories.Add(category);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
         return category;
     }
 
-    public bool Delete(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
-        var category = GetOneById(id);
+        var category = await GetOneByIdAsync(id);
         if (category is null) throw new Exception("Id not found");
 
         context.Categories.Remove(category);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
 
         return true;
     }

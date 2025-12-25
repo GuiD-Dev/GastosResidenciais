@@ -9,17 +9,17 @@ namespace HomeFinances.WebApi.API.Controllers;
 public class CategoryController(ICategoryService categoryService) : ControllerBase
 {
     [HttpGet]
-    public IActionResult ListCategories()
+    public async Task<IActionResult> ListCategoriesAsync()
     {
-        return Ok(categoryService.ListCategories());
+        return Ok(await categoryService.ListCategoriesAsync());
     }
 
     [HttpPost]
-    public IActionResult InsertCategory(CategoryDto dto)
+    public async Task<IActionResult> InsertCategoryAsync(CategoryDto dto)
     {
         try
         {
-            return Created(string.Empty, categoryService.InsertCategory(dto));
+            return Created(string.Empty, await categoryService.InsertCategoryAsync(dto));
         }
         catch (Exception e)
         {
@@ -28,11 +28,11 @@ public class CategoryController(ICategoryService categoryService) : ControllerBa
     }
 
     [HttpDelete("{id}")]
-    public IActionResult DeleteCategory(int id)
+    public async Task<IActionResult> DeleteCategoryAsync(int id)
     {
         try
         {
-            categoryService.DeleteCategory(id);
+            await categoryService.DeleteCategoryAsync(id);
             return NoContent();
         }
         catch (Exception e)

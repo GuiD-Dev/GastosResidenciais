@@ -7,44 +7,45 @@ namespace HomeFinances.WebApi.Infrastructure.Repositories;
 
 public class PersonRepository(PgSqlDbContext context) : IPersonRepository
 {
-    public IEnumerable<Person> GetMany(bool includeTransactions = false)
+    public async Task<IEnumerable<Person>> GetManyAsync(bool includeTransactions = false)
     {
         var query = context.People.AsQueryable();
         if (includeTransactions) query = query.Include(p => p.Transactions);
-        return query.ToList();
+        return await query.ToListAsync();
     }
 
-    public Person GetOneById(int id, bool asNoTracking = false)
+    public async Task<Person> GetOneByIdAsync(int id, bool asNoTracking = false)
     {
         var query = context.People.AsQueryable();
         if (asNoTracking) query = query.AsNoTracking();
-        return query.FirstOrDefault(p => p.Id == id);
+        return await query.FirstOrDefaultAsync(p => p.Id == id);
     }
 
-    public Person Insert(Person person)
+    public async Task<Person> InsertAsync(Person person)
     {
         context.People.Add(person);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
         return person;
     }
 
-    public Person Update(Person person)
+    public async Task<Person> UpdateAsync(Person person)
     {
-        if (GetOneById(person.Id, asNoTracking: true) is null)
+        if (await GetOneByIdAsync(person.Id, asNoTracking: true) is null)
             throw new Exception("Id not found");
 
         context.People.Update(person);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
+
         return person;
     }
 
-    public bool Delete(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
-        var person = GetOneById(id);
+        var person = await GetOneByIdAsync(id);
         if (person is null) throw new Exception("Id not found");
 
         context.People.Remove(person);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
 
         return true;
     }
