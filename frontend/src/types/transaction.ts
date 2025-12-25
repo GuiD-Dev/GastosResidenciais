@@ -1,8 +1,10 @@
+import type { TransactionType } from "./enums";
+
 export interface Transaction {
-    id?: number,
-    description: string,
-    value: number,
-    type: number,
-    categoryId: number,
-    personId: number,
+  id?: number,
+  description: string,
+  value: number,
+  type: TransactionType,
+  categoryId: number,
+  personId: number,
 }
