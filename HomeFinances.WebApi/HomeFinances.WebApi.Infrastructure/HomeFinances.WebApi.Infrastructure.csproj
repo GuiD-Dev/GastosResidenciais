@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HomeFinances.WebAPI.API\HomeFinances.WebAPI.API.csproj" />
+    <ProjectReference Include="..\HomeFinances.WebApi.API\HomeFinances.WebApi.API.csproj" />
   </ItemGroup>
 
   <ItemGroup>

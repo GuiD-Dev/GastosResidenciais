@@ -5,9 +5,9 @@
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-
+  
   <ItemGroup>
-    <ProjectReference Include="..\HomeFinances.WebAPI.Domain\HomeFinances.WebAPI.Domain.csproj" />
+    <ProjectReference Include="..\HomeFinances.WebApi.Domain\HomeFinances.WebApi.Domain.csproj" />
   </ItemGroup>
 
 </Project>
