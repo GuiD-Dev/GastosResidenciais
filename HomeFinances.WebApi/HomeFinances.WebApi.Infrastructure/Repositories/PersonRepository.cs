@@ -14,10 +14,11 @@ public class PersonRepository(PgSqlDbContext context) : IPersonRepository
         return await query.ToListAsync();
     }
 
-    public async Task<Person> GetOneByIdAsync(int id, bool asNoTracking = false)
+    public async Task<Person> GetOneByIdAsync(int id, bool asNoTracking = false, bool includeTransactions = false)
     {
         var query = context.People.AsQueryable();
         if (asNoTracking) query = query.AsNoTracking();
+        if (includeTransactions) query = query.Include(p => p.Transactions);
         return await query.FirstOrDefaultAsync(p => p.Id == id);
     }
 
@@ -30,12 +31,8 @@ public class PersonRepository(PgSqlDbContext context) : IPersonRepository
 
     public async Task<Person> UpdateAsync(Person person)
     {
-        if (await GetOneByIdAsync(person.Id, asNoTracking: true) is null)
-            throw new Exception("Id not found");
-
         context.People.Update(person);
         await context.SaveChangesAsync();
-
         return person;
     }
 

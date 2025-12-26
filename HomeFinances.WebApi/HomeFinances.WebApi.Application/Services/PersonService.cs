@@ -30,7 +30,12 @@ public class PersonService(IPersonRepository personRepository) : IPersonService
 
     public async Task<PersonDto> UpdatePersonAsync(PersonDto dto)
     {
-        await personRepository.UpdateAsync((Person)dto);
+        var person = await personRepository.GetOneByIdAsync(dto.Id, asNoTracking: true, includeTransactions: true);
+        if (person is null) throw new Exception("Id not found");
+
+        person.Update((Person)dto);
+
+        await personRepository.UpdateAsync(person);
         return dto;
     }
 
