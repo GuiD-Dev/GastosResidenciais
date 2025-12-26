@@ -39,4 +39,13 @@ public class Person : BaseEntity
     public decimal Recipes => Transactions?.Where(t => t.Type == TransactionType.Recipe)?.Sum(t => t.Value) ?? 0m;
     public decimal Expenses => Transactions?.Where(t => t.Type == TransactionType.Expense)?.Sum(t => t.Value) ?? 0m;
     public decimal Balance => Recipes - Expenses;
+
+    public void Update(Person data)
+    {
+        if (data.Age < 18 && Recipes > 0)
+            throw new DomainException("Person with Recipes cannot have less than 18 years old");
+
+        Name = data.Name;
+        Age = data.Age;
+    }
 }
