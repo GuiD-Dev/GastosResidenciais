@@ -30,6 +30,13 @@ builder.Services.AddDbContext<PgSqlDbContext>(options =>
 
 var app = builder.Build();
 
+// Garantir que as migrations sejam aplicadas automaticamente ao iniciar a aplicação.
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<PgSqlDbContext>();
+    db.Database.Migrate();
+}
+
 app.UseCors();
 app.UseHttpsRedirection();
 app.MapControllers();

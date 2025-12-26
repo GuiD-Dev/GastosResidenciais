@@ -14,6 +14,12 @@ public class PersonController(IPersonService personService) : ControllerBase
         return Ok(await personService.ListPeopleAsync());
     }
 
+    /*
+        Retorna as pessoas com suas transações associadas.
+        A consulta é condicionada para retornar pessoas com suas transações,
+        realizando um include ao executar a query no EF Core.
+        Essa rota é a utilizada na funcionalidade de consulta de totais por pessoa.
+    */
     [HttpGet("list-with-transactions")]
     public async Task<IActionResult> ListPeopleWithTransactionsAsync()
     {
