@@ -25,14 +25,24 @@ export function TransactionPage() {
   }, []);
 
   async function handleSubmit(transaction: Transaction) {
-    await createTransaction(transaction)
-    setTransactions(await getTransactions());
+    try {
+      await createTransaction(transaction);
+      setTransactions(await getTransactions());
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        alert(error.message);
+    }
   }
 
   async function handleDelete(id: number) {
     if (confirm("Confirm the exclusion of the transaction?")) {
-      await deleteTransaction(id);
-      setTransactions(await getTransactions());
+      try {
+        await deleteTransaction(id);
+        setTransactions(await getTransactions());
+      } catch (error) {
+        if (error instanceof Error)
+          alert(error.message);
+      }
     }
   }
 

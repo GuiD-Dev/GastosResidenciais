@@ -18,19 +18,29 @@ export function PersonPage() {
   }, []);
 
   async function handleSubmit(person: Person) {
-    if (!person.id)
-      await createPerson(person)
-    else
-      await updatePerson(person)
+    try {
+      if (!person.id)
+        await createPerson(person);
+      else
+        await updatePerson(person);
 
-    setPeople(await getPeople());
-    setSelectedPerson(null);
+      setPeople(await getPeople());
+      setSelectedPerson(null);
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        alert(error.message);
+    }
   }
 
   async function handleDelete(id: number) {
     if (confirm("Confirm the exclusion of the person?")) {
-      await deletePerson(id);
-      setPeople(await getPeople());
+      try {
+        await deletePerson(id);
+        setPeople(await getPeople());
+      } catch (error: unknown) {
+        if (error instanceof Error)
+          alert(error.message);
+      }
     }
   }
 

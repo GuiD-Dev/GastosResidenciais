@@ -17,14 +17,24 @@ export function CategoryPage() {
   }, []);
 
   async function handleSubmit(category: Category) {
-    await createCategory(category)
-    setCategories(await getCategories());
+    try {
+      await createCategory(category);
+      setCategories(await getCategories());
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        alert(error.message);
+    }
   }
 
   async function handleDelete(id: number) {
     if (confirm("Confirm the exclusion of the category?")) {
-      await deleteCategory(id);
-      setCategories(await getCategories());
+      try {
+        await deleteCategory(id);
+        setCategories(await getCategories());
+      } catch (error: unknown) {
+        if (error instanceof Error)
+          alert(error.message);
+      }
     }
   }
 
